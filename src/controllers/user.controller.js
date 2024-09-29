@@ -26,11 +26,11 @@ const generateAccessAndRefereshTokens = async(user) =>{
 
 const registerUser = asyncHandler(async (req, res)=>{
     console.log("user req body", req.body)
-    const {fullName, email, username, password } = req.body
+    const {email, username, password } = req.body
     // ------ TEST --------
-    console.log("Full name, email, username, password", fullName, email, username, password )
+    console.log("Full name, email, username, password", email, username, password )
     if (
-        [fullName, email, username, password].some((field) => field?.trim() === "")
+        [ email, username, password].some((field) => field?.trim() === "")
     ) {
 
         throw new ApiError(400, "All fields are required")
@@ -45,7 +45,6 @@ const registerUser = asyncHandler(async (req, res)=>{
     }
     const user = await User.create(
         {
-            fullName,
             email,
             password,
             username
