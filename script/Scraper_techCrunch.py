@@ -319,9 +319,9 @@ for i in range(num_topics):
 final_df = pd.DataFrame(final_dict)
 
 # Export the dataframe to a CSV file
-final_df.to_csv('final_articles_techCrunch.csv', index=False)
+# final_df.to_csv('final_articles_techCrunch.csv', index=False)
 
-print("CSV file created successfully!")
+# print("CSV file created successfully!")
 
 final_df.to_json('final_articles_techCrunch.json', orient='records')
 print("JSON file created successfully!")
