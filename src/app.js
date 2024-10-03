@@ -37,8 +37,9 @@ app.get('/', (req, res)=>{
 })
 
 import userRouter from './routes/user.route.js'
-
+import newsRouter from './routes/news.routes.js'
 app.use('/user', userRouter)
+app.use('/news', newsRouter)
 
 
 
