@@ -1,0 +1,56 @@
+{
+
+  "name": "news-aggrigator-backend",
+
+  "type": "module",
+
+  "version": "1.0.0",
+
+  "description": "Tag Spice Backend",
+
+  "main": "index.js",
+
+  "scripts": {
+
+    "test": "echo \"Error: no test specified\" && exit 1",
+
+    "start": "node scr/index.js",
+
+    "dev": "nodemon src/index.js",
+
+    "vercel-build": "echo hello"
+
+  },
+
+  "author": "",
+
+  "license": "ISC",
+
+  "dependencies": {
+
+    "@langchain/groq": "^0.0.15",
+
+    "bcrypt": "^5.1.1",
+
+    "cookie-parser": "^1.4.6",
+
+    "cors": "^2.8.5",
+
+    "dotenv": "^16.4.5",
+
+    "express": "^4.19.2",
+
+    "jsonwebtoken": "^9.0.2",
+
+    "langchain": "^0.2.10",
+
+    "mongoose": "^8.5.1",
+
+    "nodemon": "^3.1.4",
+
+    "vercel": "^35.0.2"
+
+  }
+
+}
+
