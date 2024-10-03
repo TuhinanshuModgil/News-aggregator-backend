@@ -1,1 +1,1 @@
-export const DB_NAME = "tag-spice-db";
+export const DB_NAME = "news-aggregator-db";

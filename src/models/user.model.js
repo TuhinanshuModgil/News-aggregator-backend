@@ -20,17 +20,6 @@ const userSchema = new Schema({
         trim: true
 
     },
-    fullName: {
-        type: String,
-        required: true,
-        trim: true,
-    },
-    commentCollections: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "CommentCollection"            
-        }
-    ],
     password: {
         // becrypt encrypted
         type: String,
