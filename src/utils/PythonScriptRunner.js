@@ -61,7 +61,7 @@ export async function handleGeneratedFile(filePath, newsProviderName) {
         const jsonData = JSON.parse(data);
         console.log("Parsed JSON data:", jsonData[0]);
         
-        let numAtricles = 2
+        let numAtricles = 10
         if(jsonData?.length < numAtricles){
             numAtricles = jsonData.length;
         }
@@ -73,6 +73,7 @@ export async function handleGeneratedFile(filePath, newsProviderName) {
                 topic_title: jsonData[i].topic_title,
                 article_title: jsonData[i].article_title,
                 article_url: jsonData[i].article_url,
+                article_date: jsonData[i].article_date,
                 article_text: modelOutput
             })
 

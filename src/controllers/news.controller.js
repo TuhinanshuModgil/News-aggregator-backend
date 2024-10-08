@@ -4,7 +4,7 @@ import { asyncHandler } from "../utils/AsyncHandler.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { handleGeneratedFile, runPythonScript } from "../utils/PythonScriptRunner.js";
 import { ApiError } from "../utils/ApiError.js";
-import { News } from "../models/newsCollection.model.js";
+import { News, NewsItem } from "../models/newsCollection.model.js";
 const updateNews = asyncHandler(async (req, res)=>{
 
 })
@@ -55,5 +55,44 @@ export const addNews = asyncHandler(async (req, res)=>{
 })
 
 export const getNews = asyncHandler(async (req, res)=>{
+    // Step 1: Fetch all channels
+    const channels = await News.find();
+
+    if (!channels || channels.length === 0) {
+        return res.status(404).json({ message: 'No channels found.' });
+    }
+
+    // Step 2: Extract all news_ids from all channels
+    let allNewsIds = [];
+    channels.forEach(channel => {
+        allNewsIds = [...allNewsIds, ...channel.news];
+    });
+
+    // Step 3: Fetch all news objects using the news_ids
+    const allNews = await NewsItem.find({ _id: { $in: allNewsIds } });
+
+
+    // Step 4: Return the combined news objects in a single array
+    res.status(200).json({
+        message: 'All news from all channels retrieved successfully.',
+        news: allNews
+    });
+})
+
+export const upvoteNews = asyncHandler(async (req, res)=>{
+    const {newsItemId} = req.body
+    const newsItem = await NewsItem.findById(newsItemId)
+    if(!newsItem){
+        throw new ApiError(404, "Cant find news article with id")
+    }
+    console.log('reached upvote route')
+    newsItem.upvotes = newsItem.upvotes?newsItem.upvotes + 1: 1;
+    await newsItem.save()
+
+    res.status(200).json({
+        message: 'Article upvotes successfully',
+        upvotes: newsItem.upvotes
+    });
     
+
 })

@@ -16,6 +16,9 @@ const newsItemSchema = new Schema({
     article_date: {
       type: String,  // Source of the news article (e.g., website, publisher)
     },
+    upvotes:{
+      type: Number
+    },
     article_text: {
         type: [
           {type:String}
