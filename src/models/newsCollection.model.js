@@ -17,7 +17,9 @@ const newsItemSchema = new Schema({
       type: String,  // Source of the news article (e.g., website, publisher)
     },
     article_text: {
-        type: String 
+        type: [
+          {type:String}
+        ] 
     }
   });
 

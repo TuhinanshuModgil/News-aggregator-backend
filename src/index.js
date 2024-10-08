@@ -6,18 +6,21 @@ import connectDB from "./db/index.js";
 //     path: './env'
 // })
 
-
+let count = 1
 connectDB()
 .then(()=>{
+    // setInterval(()=>{console.log("ran update script: ", count); count++}, 1000)
     app.on("error", (err)=>{
         console.log("Error after database connection: ", err.message)
         throw err
     })
+
 }
 
 )
 .then(()=>{
     console.log("Starting server listening")
+   
     app.listen(process.env.PORT||5000, ()=>{
         console.log(`server running at ${process.env.PORT||5000}`)
     })
