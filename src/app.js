@@ -34,12 +34,15 @@ app.use(cookieParser())
 
 app.get('/', (req, res)=>{
     res.send('Hello from Backend')
+
 })
 
 import userRouter from './routes/user.route.js'
 import newsRouter from './routes/news.routes.js'
+import testRouter from './routes/test.routes.js'
 app.use('/user', userRouter)
 app.use('/news', newsRouter)
+app.use('/test', testRouter)
 
 
 

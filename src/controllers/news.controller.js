@@ -56,6 +56,7 @@ export const addNews = asyncHandler(async (req, res)=>{
 
 export const getNews = asyncHandler(async (req, res)=>{
     // Step 1: Fetch all channels
+    console.log("Reached get news route")
     const channels = await News.find();
 
     if (!channels || channels.length === 0) {

@@ -16,7 +16,6 @@ connectDB()
     })
 
 }
-
 )
 .then(()=>{
     console.log("Starting server listening")
